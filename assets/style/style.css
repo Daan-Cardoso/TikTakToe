@@ -6,6 +6,8 @@
     --dark-primary: #bdbd4b;
     --secundary: #ff0000;
     --dark-secundary:#b80000; 
+    --X: #ff0000;
+    --O: #0000ff;
 }
 
 * {
@@ -45,9 +47,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.X, .O{
     font-size: 4em;
     font-family: 'Poppins', sans-serif;
-    color: var(--secundary);
+}
+
+.X{
+    color: var(--X);
+}
+.O{
+    color: var(--O);
 }
 .btn-set{
     grid-area: buttons;

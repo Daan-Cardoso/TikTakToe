@@ -21,16 +21,16 @@ const app = {
         if (this.board[spot] === '') {
             if (this.currentPlayer == this.players[0]) {
                 app.board[spot] = this.symbols[0];
-                slot.innerHTML = this.symbols[0];
+                slot.innerHTML = `<span class="X"> ${this.symbols[0]} </span>`
             } else {
                 app.board[spot] = this.symbols[1];
-                slot.innerHTML = this.symbols[1];
+                slot.innerHTML = `<span class="O"> ${this.symbols[1]} </span>`
             }
         } else {
             window.alert('Essa casa já foi preenchida');
             this.alternatePlayer();
         }
-        this.gameOver();
+        app.gameOver();
     },
     alternatePlayer: function () {
         if (this.currentPlayer === null) {
@@ -42,10 +42,23 @@ const app = {
         }
     },
     gameOver: function () {
+        this.checkWinner();
         if (this.board[0] !== '' && this.board[1] !== '' && this.board[2] !== '' && this.board[3] !== '' && this.board[4] !== '' && this.board[5] !== '' && this.board[6] !== '' && this.board[7] !== '' && this.board[8] !== '') {
-            this.winner();
+            console.log("Empatou")
         }
     },
-    winner: function () {
+    checkWinner: function () {
+        for( i in this.winnerScore){
+            for( var j = 0; j < this.board.length; j++){
+                if(this.board[this.winnerScore[i][0]] === this.symbols[0] && this.board[this.winnerScore[i][1]] === this.symbols[0] && this.board[this.winnerScore[i][2]] === this.symbols[0] ){
+                    console.log("X é o vencedor");
+                    break;
+                }else if(this.board[this.winnerScore[i][0]] === this.symbols[1] && this.board[this.winnerScore[i][1]] === this.symbols[1] && this.board[this.winnerScore[i][2]] === this.symbols[1] ){
+                    console.log("O é o vencedor");
+                    break;
+                }
+            }
+        }
     }
+    
 }
